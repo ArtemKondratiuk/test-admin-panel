@@ -1,0 +1,30 @@
+###> symfony/framework-bundle ###
+/.env
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> docker ###
+/docker/mysql/data/
+###< docker ###
+
+###> php-tools ###
+/.phpstan.cache/
+/phpstan-report.xml
+/phpcs-report.xml
+###< php-tools ###
+
+###> ide-configs ###
+/.vscode/
+/.idea/
+###< ide-configs ###
+
+###> os ###
+.DS_Store
+Thumbs.db
+###< os ###

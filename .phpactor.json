@@ -1,0 +1,9 @@
+{
+    "$schema": "/home/dev/.local/share/nvim/mason/packages/phpactor/phpactor.schema.json",
+    "php.bin": "docker-php",
+    "composer.autoloader_path": "vendor/autoload.php",
+    "indexer.enabled": true,
+    "symfony.enabled": true,
+    "language_server_phpstan.enabled": false,
+    "php_code_sniffer.enabled": false
+}

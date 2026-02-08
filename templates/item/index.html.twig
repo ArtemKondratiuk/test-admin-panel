@@ -1,0 +1,53 @@
+{# templates/Item/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin Panel{% endblock %}
+
+{% block body %}
+    <h1>Admin Panel</h1>
+
+    <a href="{{ path('app_item_new') }}">add new item</a>
+
+    <hr>
+
+    {% set currentPage = pagination.currentPageNumber %}
+
+    {% if pagination is empty %}
+        <p>The list is empty</p>
+    {% else %}
+        <ul>
+            {% for item in pagination %}
+                <li>
+                    
+                    <b>{{ item.title }}</b>
+
+                    
+                    <form method="post" action="{{ path('app_item_move', {'id': item.id, 'direction': 'up', 'page': currentPage}) }}" style="display:inline">
+                        <button type="submit">↑</button>
+                    </form>
+                    <form method="post" action="{{ path('app_item_move', {'id': item.id, 'direction': 'down', 'page': currentPage}) }}" style="display:inline">
+                        <button type="submit">↓</button>
+                    </form>
+
+                    |
+
+                    
+                    <a href="{{ path('app_item_edit', {'id': item.id, 'page': currentPage}) }}">edit</a>
+
+                    <form method="post" action="{{ path('app_item_delete', {'id': item.id}) }}" style="display:inline" onsubmit="return confirm('remove?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ item.id) }}">
+                        <button type="submit">remove</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <hr>
+
+    
+    <div>
+        {{ knp_pagination_render(pagination) }}
+    </div>
+
+{% endblock %}
